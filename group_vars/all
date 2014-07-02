@@ -1,5 +1,5 @@
 ---
 
-dbuser: root
-dbpass: secret
-dbname: wordpress
+wp_db_user: root
+wp_db_password: secret
+wp_db_name: wordpress
