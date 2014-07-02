@@ -6,6 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "puppetlabs/debian-6.0.9-64-nocm"
+  config.vm.synced_folder "wordpress/", "/srv/wordpress/", create: true
   config.vm.hostname = "squeeze-wordpress"
   config.ssh.forward_agent = true
   config.vm.network :private_network, ip: "192.168.50.4"
