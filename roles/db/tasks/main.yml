@@ -1,0 +1,14 @@
+---
+# This playbook will install mysql and create db user and give permissions.
+
+- name: Install MySQL package
+  apt: pkg=mysql-server state=installed
+
+- name: Start mysqld service
+  service: name=mysqld state=started enabled=true
+
+- name: Create database
+  mysql_db: name={{ dbname }} state=present
+
+- name: Create database user
+  mysql_user: name={{ dbuser }} password={{ dbpass }} priv=*.*:ALL host='%' state=present

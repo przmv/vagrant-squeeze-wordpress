@@ -1,0 +1,5 @@
+---
+
+dbuser: root
+dbpass: secret
+dbname: wordpress
