@@ -29,3 +29,7 @@
 
 - name: Change ownership of Wordpress installation
   file: path=/srv/wordpress/ owner=wordpress group=wordpress state=directory recurse=yes
+
+- name: Update Apache2 sites configuration
+  copy: src=default dest=/etc/apache2/sites-available/default
+  notify: restart apache2
