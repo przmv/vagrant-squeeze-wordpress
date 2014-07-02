@@ -2,7 +2,10 @@
 # This playbook will install mysql and create db user and give permissions.
 
 - name: Install MySQL package
-  apt: name=mysql-server state=present
+  apt: name={{ item }} state=present
+  with_items:
+    - mysql-server
+    - python-mysqldb
 
 - name: Start MySQL service
   service: name=mysql state=started enabled=yes
