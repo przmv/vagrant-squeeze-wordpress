@@ -1,0 +1,9 @@
+---
+- name: Install Wordpress, MySQL, Apache2 and PHP/CGI
+  hosts: all
+  sudo: yes
+
+  roles:
+    - db
+    - web
+    - wordpress
