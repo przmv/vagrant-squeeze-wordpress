@@ -1,12 +1,18 @@
 ---
 # This playbook will install apache2 and php-cgi
 
-- name: Install Apache and PHP
+- name: Install Apache2 and PHP
   apt: name={{ item }} state=present
   with_items:
     - apache2
     - php5-cgi
     - php5-mysql
 
-- name: Enable Apache actions module
+- name: Enable Apache2 actions module
   apache2_module: state=present name=actions
+
+- name: Configure Apache2
+  copy: src=php-cgi.conf dest=/etc/apache2/conf.d/php-cgi.conf
+
+- name: Start Apache2
+  service: name=apache2 state=started enabled=yes
