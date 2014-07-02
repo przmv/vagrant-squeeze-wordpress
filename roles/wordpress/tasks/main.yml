@@ -5,7 +5,7 @@
   get_url: url=http://wordpress.org/latest.tar.gz dest=/srv/latest.tar.gz
 
 - name: Extract archive
-  command: chdir=/srv/ /bin/tar xvf latest.tar.gz creates=/srv/wordpress
+  command: chdir=/srv/ /bin/tar xvf latest.tar.gz creates=/srv/wordpress/readme.html
 
 - name: Add group "wordpress"
   group: name=wordpress
