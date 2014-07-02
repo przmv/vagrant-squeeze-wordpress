@@ -1,0 +1,12 @@
+---
+# This playbook will install apache2 and php-cgi
+
+- name: Install Apache and PHP
+  apt: name={{ item }} state=present
+  with_items:
+    - apache2
+    - php5-cgi
+    - php5-mysql
+
+- name: Enable Apache actions module
+  apache2_module: state=present name=actions
