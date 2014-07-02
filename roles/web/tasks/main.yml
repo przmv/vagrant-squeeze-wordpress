@@ -6,13 +6,22 @@
   with_items:
     - apache2
     - php5-cgi
+    - php5-curl
+    - php5-gd
+    - php5-mcrypt
     - php5-mysql
 
-- name: Enable Apache2 actions module
-  apache2_module: state=present name=actions
+- name: Enable Apache2 modules
+  apache2_module: name={{ item }} state=present
+  with_items:
+    - actions
+    - rewrite
 
 - name: Configure Apache2
   copy: src=php-cgi.conf dest=/etc/apache2/conf.d/php-cgi.conf
+
+- name: Configure PHP
+  copy: src=php.ini dest=/etc/php5/cgi/php.ini
 
 - name: Start Apache2
   service: name=apache2 state=started enabled=yes
