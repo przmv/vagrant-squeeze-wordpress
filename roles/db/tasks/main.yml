@@ -6,9 +6,3 @@
 
 - name: Start mysqld service
   service: name=mysqld state=started enabled=yes
-
-- name: Create database
-  mysql_db: name={{ dbname }} state=present
-
-- name: Create database user
-  mysql_user: name={{ dbuser }} password={{ dbpass }} priv=*.*:ALL host='%' state=present
