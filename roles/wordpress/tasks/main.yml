@@ -7,12 +7,6 @@
 - name: Extract archive
   command: chdir=/srv/ /bin/tar xvf latest.tar.gz creates=/srv/wordpress/readme.html
 
-- name: Add group "wordpress"
-  group: name=wordpress
-
-- name: Add user "wordpress"
-  user: name=wordpress group=wordpress home=/srv/wordpress/
-
 - name: Fetch random salts for Wordpress config
   local_action: command curl https://api.wordpress.org/secret-key/1.1/salt/
   register: "wp_salt"
@@ -26,9 +20,6 @@
 
 - name: Copy Wordpress config file
   template: src=wp-config.php dest=/srv/wordpress/
-
-- name: Change ownership of Wordpress installation
-  file: path=/srv/wordpress/ owner=wordpress group=wordpress state=directory recurse=yes
 
 - name: Update Apache2 sites configuration
   copy: src=default dest=/etc/apache2/sites-available/default

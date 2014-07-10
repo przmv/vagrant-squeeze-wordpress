@@ -19,6 +19,7 @@
 
 - name: Configure Apache2
   copy: src=php-cgi.conf dest=/etc/apache2/conf.d/php-cgi.conf
+  copy: src=httpd.conf dest=/etc/apache2/httpd.conf
 
 - name: Configure PHP
   copy: src=php.ini dest=/etc/php5/cgi/php.ini
